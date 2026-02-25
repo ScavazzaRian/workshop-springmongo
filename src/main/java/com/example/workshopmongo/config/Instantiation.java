@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Configuration;
 import com.example.workshopmongo.domain.Post;
 import com.example.workshopmongo.domain.User;
 import com.example.workshopmongo.dto.AuthorDTO;
+import com.example.workshopmongo.dto.CommentDTO;
 import com.example.workshopmongo.repository.PostRepository;
 import com.example.workshopmongo.repository.UserRepository;
 
@@ -40,6 +41,10 @@ public class Instantiation implements CommandLineRunner {
 		maria.getList().addAll(Arrays.asList(post1, post2));
 
 		userRepository.save(maria);
+		
+		CommentDTO coment1 = new CommentDTO("Boa viagem!", LocalDate.now(), new AuthorDTO(alex));
+		post1.getList().add(coment1);
+		postRepository.save(post1);
 	}
 
 }
